@@ -1,0 +1,41 @@
+@import '../../../styles/_variables.scss'; // Corrected import path
+
+.start-menu {
+  position: absolute;
+  bottom: 28px; // Height of the taskbar
+  left: 0;
+  width: 150px; // Adjust as needed
+  background-color: $window-gray;
+  border: 1px solid $button-shadow; // Simple border for now, can be refined
+  border-top: 1px solid $button-highlight;
+  border-left: 1px solid $button-highlight;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); // Optional: for a bit of depth
+  padding: 2px;
+  z-index: 1000; // Ensure it's above other elements
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .start-menu-item {
+    padding: 5px 10px;
+    font-family: "MS Sans Serif", sans-serif; // Classic Windows font
+    font-size: 11px;
+    cursor: default; // Standard cursor for menu items
+
+    &:hover {
+      background-color: $title-bar-active; // Using existing variable $title-bar-active
+      color: white;
+    }
+
+    &.separator {
+      height: 1px;
+      background-color: $button-shadow;
+      margin: 2px 0;
+      padding: 0;
+      border-bottom: 1px solid $button-highlight;
+    }
+  }
+}

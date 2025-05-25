@@ -1,0 +1,93 @@
+@import '../../styles/_variables.scss'; // Corrected path
+
+.window {
+    position: absolute; // Positioned relative to the Desktop
+    top: 50px; // Example starting position
+    left: 100px; // Example starting position
+    width: 400px; // Example width
+    height: 300px; // Example height
+    background-color: $window-gray;
+    border: 1px solid;
+    border-color: $button-highlight $button-shadow $button-shadow $button-highlight; // Classic 3D border
+    box-shadow: 1px 1px $button-dark-shadow; // Using $button-dark-shadow as $black might not be defined
+    display: flex;
+    flex-direction: column;
+    min-width: 150px; // Minimum reasonable width
+    min-height: 100px; // Minimum reasonable height
+    // z-index will be handled by active/inactive classes
+
+    &.active {
+        z-index: 20; // Active window should be on top
+        .title-bar {
+            background-color: $title-bar-active; // Usually blue
+        }
+    }
+
+    &.inactive {
+        z-index: 10; // Default z-index for inactive windows
+        .title-bar {
+            background-color: $title-bar-inactive; // Gray or muted color
+            // Optionally, different text color for inactive title
+            // .title-bar-text { color: $light-gray; }
+        }
+    }
+}
+
+.title-bar {
+    // background-color: $title-bar-active; // Remove this line, will be handled by .active/.inactive
+    padding: 2px 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 18px; // Standard height for title bar
+    cursor: default; // Later: make it draggable
+}
+
+.title-bar-text {
+    color: white;
+    font-family: "MS Sans Serif", sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    margin-left: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.title-bar-controls {
+    display: flex;
+}
+
+.title-bar-button {
+    width: 16px;
+    height: 14px;
+    background-color: $window-gray;
+    border: 1px solid;
+    border-color: $button-highlight $button-shadow $button-shadow $button-highlight;
+    margin-left: 2px;
+    padding: 0;
+    font-family: "Marlett", "MS Sans Serif", sans-serif; // Marlett for icons, fallback
+    font-size: 10px; // Size for Marlett icons
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+
+    &:active {
+        border-color: $button-shadow $button-highlight $button-highlight $button-shadow;
+        // Add pressed look if possible (e.g., slight shift or inner shadow)
+    }
+}
+
+// Using Unicode/text alternatives for Marlett font characters
+.minimize-button::before { content: "_"; } // Underscore for minimize
+.maximize-button::before { content: "□"; } // Unicode U+25A1 WHITE SQUARE for maximize
+.close-button::before { content: "X"; }    // Uppercase X for close
+
+.window-body {
+    flex-grow: 1;
+    padding: 10px; // Padding for content inside the window
+    overflow: auto; // If content overflows
+    background-color: $window-background-color; // Often white or light gray
+                                                // Define in _variables.scss, e.g., #FFFFFF
+}

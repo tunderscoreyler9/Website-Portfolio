@@ -12,3 +12,56 @@
     // 3D raised effect
     border-top: 2px solid $button-highlight;
 }
+
+.taskbar-startbutton {
+    // Ensure this doesn't conflict with system tray positioning
+    // e.g., it shouldn't take up all the space
+    // No specific styles needed here for now, but can be added later
+}
+
+.taskbar-systemtray {
+    margin-left: auto; // Pushes the system tray to the right
+    padding-right: 2px; // Match taskbar border style
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.taskbar-startbutton-wrapper {
+    flex-shrink: 0; // Prevent start button from shrinking
+}
+
+.taskbar-app-buttons {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: 4px; // Space after start button
+    overflow: hidden; // Prevent too many buttons from breaking layout
+    flex-grow: 1; // Allow this area to take available space
+}
+
+.taskbar-app-button {
+    height: 22px; // Match StartButton height (assuming StartButton is similar height)
+    background-color: $window-gray;
+    border: 1px solid;
+    border-color: $button-highlight $button-shadow $button-shadow $button-highlight; // 3D raised
+    padding: 0 8px;
+    margin-right: 2px;
+    font-family: "MS Sans Serif", sans-serif;
+    font-size: 11px;
+    min-width: 60px; // Minimum width
+    max-width: 150px; // Maximum width before truncating text
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    cursor: default;
+
+    &:active, &.active { // For clicked state and active window state
+        border-color: $button-shadow $button-highlight $button-highlight $button-shadow; // 3D pressed
+        background-color: $window-gray-dark; // Updated to use $window-gray-dark
+        // Consider adding padding adjustments for a more pressed look if desired
+        // padding-top: 1px; 
+        // padding-left: 9px; 
+    }
+}

@@ -1,11 +1,24 @@
-@import '../../styles/variables';
+@import '../../styles/_variables.scss'; // Corrected path
 
 .desktop {
-    background-color: $desktop-teal;
-    height: 100vh;
     width: 100vw;
-    position: relative;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
+    height: 100vh;
+    background-color: $desktop-background; // Define this in _variables.scss, e.g., #008080 (Windows 95 teal)
+    overflow: hidden; // Prevent scrollbars from appearing on the body
+    position: relative; // For absolute positioning of windows later
+    // display: flex; // No longer needed as Taskbar is not a direct child for layout purposes here
+    // flex-direction: column; // No longer needed
 }
+
+.desktop-icons-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start; // Align items from the start of the container (top)
+    justify-content: flex-start; // Align items from the left
+    padding: 10px;
+    flex-grow: 1; // Allow this container to take up available space
+    overflow-y: auto; // If many icons, allow scrolling within this container
+}
+
+// Ensure Taskbar is not covered or does not cover icons if Desktop is flex
+// This might already be handled by Taskbar's fixed positioning.

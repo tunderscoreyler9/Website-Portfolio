@@ -1,0 +1,16 @@
+// src/components/portfolio_sections/PortfolioSection.scss
+.portfolio-section {
+    padding: 10px;
+    h2 {
+        margin-top: 0;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+    }
+    h4 {
+        margin-bottom: 5px;
+    }
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+}
